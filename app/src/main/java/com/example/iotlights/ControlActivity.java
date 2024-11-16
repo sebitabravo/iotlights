@@ -24,6 +24,7 @@ public class ControlActivity extends AppCompatActivity {
         zones = new ArrayList<>();
         zones.add("Habitación");
         zones.add("Cocina");
+        Button backButton = findViewById(R.id.btnBack2);
 
         zonesContainer = findViewById(R.id.zonesContainer);
 
@@ -40,6 +41,14 @@ public class ControlActivity extends AppCompatActivity {
             zones.add(nuevaZona);
             agregarBotonZona(nuevaZona);
             Toast.makeText(ControlActivity.this, "Zona agregada: " + nuevaZona, Toast.LENGTH_SHORT).show();
+        });
+
+        // Configuración del botón de regreso
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ControlActivity.this, MainActivity.class); // Asegúrate de que MainActivity sea la actividad a la que quieres volver
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Limpiar las actividades anteriores
+            startActivity(intent);
+            finish(); // Finalizar la actividad actual
         });
     }
 
